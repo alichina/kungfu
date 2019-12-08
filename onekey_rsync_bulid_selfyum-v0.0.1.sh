@@ -26,7 +26,7 @@ EPEL_URL=mirrors.ustc.edu.cn/epel
 rpm -qa | grep rsync && echo "The package already installed" || yum install -y rsync
 rpm -qa | grep createrepo && echo "The package already installed" || yum install -y createrepo
 
-Synchronize base package to local specified path(同步Base源到本地指定路径)
+#Synchronize base package to local specified path(同步Base源到本地指定路径)
 [ -d ${BASE_DIR}/os/${ARCH} ] && echo "Directory already exists" || mkdir -p ${BASE_DIR}/os/${ARCH}
 rsync -avz --delete --exclude='repodata' rsync://${BASE_URL}/${OS}/${VERSION}/os/${ARCH}/ ${BASE_DIR}/os/${ARCH} \
 	&& createrepo ${BASE_DIR}/os/${ARCH}/ || echo "ERROR:Please try again later" && exit 1
